@@ -1,0 +1,32 @@
+// Bootstrap
+@import "../node_modules/mdbvue/build/scss/core/bootstrap/functions";
+@import "../node_modules/mdbvue/build/scss/core/bootstrap/variables";
+@import "../node_modules/mdbvue/build/scss/core/bootstrap/variables";
+
+// CORE
+@import "../node_modules/mdbvue/build/scss/core/mixins";
+@import "custom-variables";
+@import "../node_modules/mdbvue/build/scss/core/colors";
+@import "../node_modules/mdbvue/build/scss/core/variables";
+@import "../node_modules/mdbvue/build/scss/core/global";
+@import "../node_modules/mdbvue/build/scss/core/helpers";
+@import "../node_modules/mdbvue/build/scss/core/typography";
+@import "../node_modules/mdbvue/build/scss/core/masks";
+@import "../node_modules/mdbvue/build/scss/core/waves";
+
+// FREE
+@import "../node_modules/mdbvue/build/scss/free/animations-basic";
+@import "../node_modules/mdbvue/build/scss/free/buttons";
+@import "../node_modules/mdbvue/build/scss/free/cards";
+@import "../node_modules/mdbvue/build/scss/free/dropdowns";
+@import "../node_modules/mdbvue/build/scss/free/input-group";
+@import "../node_modules/mdbvue/build/scss/free/navbars";
+@import "../node_modules/mdbvue/build/scss/free/pagination";
+@import "../node_modules/mdbvue/build/scss/free/badges";
+@import "../node_modules/mdbvue/build/scss/free/modals";
+@import "../node_modules/mdbvue/build/scss/free/carousels";
+@import "../node_modules/mdbvue/build/scss/free/forms";
+@import "../node_modules/mdbvue/build/scss/free/msc";
+@import "../node_modules/mdbvue/build/scss/free/footers";
+@import "../node_modules/mdbvue/build/scss/free/list-group";
+@import "../node_modules/mdbvue/build/scss/free/tables";
