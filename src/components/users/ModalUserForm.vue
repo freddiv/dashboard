@@ -1,29 +1,30 @@
 <template>
-	<div class="row justify-content-center">
+	<container>
+		<row>
 			<column size="12" class="text-center mb-5">
-				 <card cascade class="text-left">
+				 <modal @close="close" cascade class="text-left">
 					<form class="needs-validation" id="userForm"  @keydown="stopRKey()"  @submit.prevent="addUser()">
-					<mdb-card-header class="primary-color white-text">
+					<modal-header class="primary-color white-text">
 						<h4 class="title"><fa v-if="userId != 0" class="fa fa-pencil" /><fa v-if="userId == 0" class="fa fa-user" /> {{userId == 0 ? 'Add New' : 'Edit'}} User </h4>
-					</mdb-card-header>
-					<card-body class="grey-text">
+					</modal-header>
+					<modal-body class="grey-text">
 					<div class="input-group mt-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon">
-								<i class="fa fa-user prefix"></i>
+								<i class="fa fa-user prefix mr-1"></i>
 							</span>
 						</div>
-						<input class="form-control border border-left-0 rounded" aria-label="First Name" type="text"
+						<input class="form-control border border-left-0" aria-label="First Name" type="text"
 							id="first_name" name="first_name" v-model="userById.first_name" label="First Name" placeholder="First Name" required>
 						<div class="invalid-tooltip">Please enter a first name.</div>
 					</div>
 						<div class="input-group mt-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon">
-								<i class="fa fa-user prefix"></i>
+								<i class="fa fa-user prefix mr-1"></i>
 							</span>
 						</div>
-						<input class="form-control border border-left-0 rounded" aria-label="Last Name" type="text"
+						<input class="form-control border border-left-0" aria-label="Last Name" type="text"
 							id="last_name" name="last_name" v-model="userById.last_name" label="Last Name" placeholder="Last Name" required>
 						<div class="invalid-tooltip">Please enter a valid email address.</div>
 					</div>
@@ -33,7 +34,7 @@
 								<i class="fa fa-envelope prefix"></i>
 							</span>
 						</div>
-						<input class="form-control border border-left-0 rounded" aria-label="Email Address" type="email"
+						<input class="form-control border border-left-0" aria-label="Email Address" type="email"
 							 id="email" name="email" v-model="userById.email" label="Email Address" placeholder="Email Address" required>
 						<div class="invalid-tooltip">Please enter a valid email address.</div>
 					</div>
@@ -74,15 +75,16 @@
 								<input type="checkbox" class="custom-control-input" id="is_active" name="is_active" value="true" v-model="userById.is_active">
 								<label class="custom-control-label" for="is_active">Check to make user active</label>
 						</div>
-					</card-body>
-					<mdb-card-footer>
-						<btn color="warning" @click.native="cancel">Close</btn>
+					</modal-body>
+					<modal-footer>
+						<btn color="warning" @click.native="close">Close</btn>
 						<btn color="green">{{userId == 0 ? 'Add New' : 'Edit'}} User </btn>
-					</mdb-card-footer>
+					</modal-footer>
 					 </form>
-				 </card>
+				</modal>
 			</column>
-		</div>
+		</row>
+	</container>
 </template>
 
 <script>
@@ -91,22 +93,18 @@ import {
 	mapActions, mapGetters, mapState,
 } from 'vuex'
 import {
-	Container, Row, Btn, Fa, Card, CardBody, mdbCardTitle, mdbCardText, mdbCardHeader, mdbCardFooter, mdbView, Modal, ModalHeader, ModalBody, ModalFooter, Column,	mdbContainer,
+	Container, Row, Btn, Fa, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Column,
+	mdbContainer,
 } from 'mdbvue'
 
 export default {
-	name: 'UserForm',
+	name: 'ModalUserForm',
 	components: {
 		Container,
 		mdbContainer,
 		Row,
 		Card,
-        CardBody, 
-        mdbCardTitle, 
-        mdbCardText,
-        mdbCardHeader,
-        mdbCardFooter,
-        mdbView,
+		CardBody,
 		Column,
 		Btn,
 		Fa,
@@ -115,7 +113,7 @@ export default {
 		ModalBody,
 		ModalFooter,
 	},
-	props: ['userId'],
+	props: ['userId', 'gridRef'],
 	data() {
 		return {
 			userById: {
@@ -139,13 +137,8 @@ export default {
 	},
 	methods: {
 		...mapActions(['fetchUser', 'addUser']),
-		 cancel() {
-			  const eventData = {
-				userId: this.userId,
-				selectedView: 'UserGrid',
-			 }
-       // eventBus.$emit('toggleUserModal', params.value)
-        eventBus.$emit('showUserForm', eventData)
+		 close() {
+			 eventBus.$emit('toggleUserModal', 0)
 		 },
 		 addUser() {
 			// console.log(event)
@@ -165,9 +158,8 @@ export default {
 		},
 	 },
 	 created() {
-		 console.log(this)
-			this.fetchUser(this.userId)
-			this.userById = this.$store.state.users.userById
+		this.fetchUser(this.userId)
+		this.userById = this.$store.state.users.userById
 	},
 }
 </script>

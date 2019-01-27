@@ -48,8 +48,8 @@ const qcRouter = new Router({
 			name: 'users',
 			component: Users,
 			meta: {
-				requireAuth: true,
-				requireAdmin: true,
+				requireAuth: false,
+				requireAdmin: false,
 			},
 		}, {
 			path: '/allocations',

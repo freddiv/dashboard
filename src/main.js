@@ -13,6 +13,17 @@ import store from './store'
 Vue.use(Notify)
 Vue.config.productionTip = false
 
+export const eventBus = new Vue({
+	methods: {
+		toggleUserModal(userId) {
+			this.$emit('toggleUserModal', userId)
+		},
+		showUserForm(eventData) {	
+			this.$emit('showUserForm', eventData)
+		},
+	},
+})
+
 new Vue({
 	router,
 	store,

@@ -6,7 +6,7 @@
 				<i class="fa fa-envelope prefix"></i>
 			</span>
 		</div>
-		<input class="form-control border border-left-0 rounded" aria-label="Email Address" type="email"
+		<input class="form-control border border-left-0" aria-label="Email Address" type="email"
 			v-model="userLogin.email" id="emailAddress" label="emailAddress" placeholder="Email Address" required>
 		<div class="invalid-tooltip">Please enter a valid email address.</div>
 	</div>
@@ -79,6 +79,10 @@ export default {
 }
 </script>
 <style scoped>
+input {
+	border-bottom-right-radius: 4px !important;
+	border-top-right-radius: 4px !important;
+}
  .ui-pnotify.stackTop {
       top: auto;
       left: auto;
