@@ -42,13 +42,12 @@ export default {
 				userId: 0,
 				selectedView: 'UserForm',
 			 }
-			 console.log(eventData) 
-       // eventBus.$emit('toggleUserModal', params.value)
-        eventBus.$emit('showUserForm', eventData)
+			// eventBus.$emit('toggleUserModal', params.value)
+			eventBus.$emit('showUserForm', eventData)
 		 },
 		 onQuickFilterChange(event) {
 			 console.log(event.target.value)
-			 this.$emit('onQuickFilterChange', event.target.value)
+			 eventBus.$emit('userFilter', event.target.value)
 		 },
 		 resetGrid() {
 			this.gridRef.setFilterModel()

@@ -1,19 +1,17 @@
 <template>
   <button :is="tag" :class="className" :type="type" :role="role" @click="wave">
-    <fa v-if="iconLeft" :icon="icon"/>
-    <slot></slot>
-    <fa v-if="iconRight" :icon="icon"/>
+
   </button>
 </template>
 
 <script>
 import classNames from 'classnames'
 import waves from '../mixins/waves'
-import Fa from './Fa'
+
 
 const Btn = {
 	components: {
-		Fa,
+
 	},
 	props: {
 		tag: {

@@ -1,12 +1,10 @@
 <template>
- <fa icon="edit" size="2x" class="green-text"/>
+<i class="fa fa-edit green-text large"></i>
 </template>
 
 <script>
-import {Fa} from 'mdbvue'
 export default {
 	name: 'EditUserLink',
-	components: {Fa},
 	methods: {
 		editUserForm() {
 			const gridRef = this.$parent.$parent
@@ -19,6 +17,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.large {
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
 </style>

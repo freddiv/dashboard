@@ -1,5 +1,6 @@
-import mutations from '@/store/mutations.js'
 import session from '@/session.js'
+import authStore from '@/store/modules/auth.js'
+const mutations = authStore.mutations
 
 jest.mock('@/session.js', () => ({
 	currentUser: jest.fn(() => ({firstName: 'Jon', lastName: 'Anderson'})),

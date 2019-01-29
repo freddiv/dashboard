@@ -8,8 +8,8 @@
 				v-on:onQuickFilterChange="onQuickFilterChanged"
 				:gridRef="gridRef"></user-tool-bar>
 					<keep-alive>
-						<transition name='slide' mode="out-in" reaveal>
-							<component :is="selectedView" :userId="userId"></component>	
+						<transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutDown" mode="out-in">
+							<component :is="selectedView" :userId="userId"></component>
 						</transition>
 					</keep-alive>			
 				<modal-user-form
@@ -89,6 +89,35 @@ export default {
 		transition: opacity 2s;
 		opacity: 0;
 	}
+	.flip-enter {
+		/* opacity: 1 */
+	}
+	.flip-enter-active {
+		animation: flip-in 0.5s ease-out forwards;
+	}
+	.flip-leave {
+	/* opacity: 1 */
+	}
+	.flip-leave-active {
+		animation: flip-out 0.5s ease-out forwards;
+	}
+	@keyframes flip-in {
+		from {
+			transform: rotateY(90deg);
+		}
+		to {
+			transform: rotateY(0deg);
+		}
+	}
+	@keyframes flip-out {
+		from {
+			transform: rotateY(0deg);
+		}
+		to {
+			transform: rotateY(90deg);
+		}
+	}
+
 
 	.slide-enter {
 	 opacity: 0;
@@ -102,24 +131,24 @@ export default {
 	}
 	.slide-leave-active {
 			animation: slide-out 2s ease-out forwards;
-			opacity: 0;
+			opacity: 0.5;
 			transition: opacity 2s;
 			position: absolute;
 	}
 	@keyframes slide-in {
 		from {
-			transform: translateX(-600px);
+			transform: translateY(-600px);
 		}
 		to {
-			transform: translateX(0px);
+			transform: translateY(0px);
 		}
 	}
 	@keyframes slide-out {
 		from {
-			transform: translateX(0px);
+			transform: translateY(0px);
 		}
 		to {
-			transform: translateX(600px);
+			transform: translateY(600px);
 		}
 	}
 </style>

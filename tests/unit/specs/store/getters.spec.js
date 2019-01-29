@@ -1,4 +1,5 @@
-import getters from '@/store/getters.js'
+import authStore from '@/store/modules/auth.js'
+const getters = authStore.getters
 
 describe('DataCheck getters', () => {
 	const state = {user: {}}

@@ -30,16 +30,14 @@
 <script>
 import session from '../session.js'
 import {mdbBtn} from 'mdbvue'
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
 const stackTop = {
-  dir1: 'down', // With a dir1 of 'up', the stacks will start appearing at the bottom.
-  // Without a `dir2`, this stack will be horizontally centered, since the `dir1` axis is vertical.
-  firstpos1: 55, // The notices will appear 25 pixels from the bottom of the context.
-  firstpos2: 240,
-  push: 'top', // Each new notice will appear at the bottom of the screen, which is where the 'top' of the stack is. Other notices will be pushed up.
-  modal: false, // When a notice appears in this stack, a modal overlay will be created.
-   // When the user clicks on the overlay, all notices in this stack will be closed.
-  context: document.getElementById('login-form') // The notices will be placed in the 'page-container' element.
+	dir1: 'down',
+	firstpos1: 55,
+	firstpos2: 240,
+	push: 'top',
+	modal: false,
+	context: document.getElementById('login-form'),
 }
 export default {
 	name: 'LoginForm',
@@ -60,22 +58,21 @@ export default {
 		loginUser() {
 			var error = ''
 			session.login(this.userLogin.email, this.userLogin.password, false).then((data) => {
-			console.log('session.login returned in action.login > then: ', data)
-		}).catch(err => {
-			console.log('session.login error: ' + err.message)
-			error = err
-		})
+				var loginData = data
+			}).catch(err => {
+				error = err
+			})
 			this.$pnotify.alert({
-						text: 'another message',
-						left: '900px',
-						delay: 6000,
-						stack: stackTop,
-					})
+				text: 'another message',
+				left: '900px',
+				delay: 6000,
+				stack: stackTop,
+			})
 		},
 		 close() {
 			 this.$emit('close', event)
 		 },
-	}
+	},
 }
 </script>
 <style scoped>

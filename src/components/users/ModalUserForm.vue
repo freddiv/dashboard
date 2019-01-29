@@ -5,7 +5,7 @@
 				 <modal @close="close" cascade class="text-left">
 					<form class="needs-validation" id="userForm"  @keydown="stopRKey()"  @submit.prevent="addUser()">
 					<modal-header class="primary-color white-text">
-						<h4 class="title"><fa v-if="userId != 0" class="fa fa-pencil" /><fa v-if="userId == 0" class="fa fa-user" /> {{userId == 0 ? 'Add New' : 'Edit'}} User </h4>
+						<h4 class="title"><i v-if="userId != 0" class="fa fa-edit"></i><i v-if="userId == 0" class="fa fa-user"></i> {{userId == 0 ? 'Add New' : 'Edit'}} User </h4>
 					</modal-header>
 					<modal-body class="grey-text">
 					<div class="input-group mt-3">
@@ -93,7 +93,7 @@ import {
 	mapActions, mapGetters, mapState,
 } from 'vuex'
 import {
-	Container, Row, Btn, Fa, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Column,
+	Container, Row, Btn, Card, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, Column,
 	mdbContainer,
 } from 'mdbvue'
 
@@ -107,7 +107,6 @@ export default {
 		CardBody,
 		Column,
 		Btn,
-		Fa,
 		Modal,
 		ModalHeader,
 		ModalBody,

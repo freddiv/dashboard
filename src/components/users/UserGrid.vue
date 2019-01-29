@@ -1,19 +1,16 @@
 <template>
-		<!--Grid row-->
-		<div class="row justify-content-center">
-				<ag-grid-vue ref="userGrid" v-bind:style="gridSize"
-							class="ag-theme-balham"
-							:defaultColDef="defaultColDef"
-							:columnDefs="columnDefs"
-							:rowData="allUsers"
-							:cellClicked="onCellClicked"
-							:enableSorting="true"
-							:enableFilter="true"
-							rowSelection="single"
-							:gridReady="onGridReady"
-							:rowSelected="onRowSelected">
-				</ag-grid-vue>
-		</div>
+	<ag-grid-vue ref="userGrid" v-bind:style="gridSize"
+				class="ag-theme-balham"
+				:defaultColDef="defaultColDef"
+				:columnDefs="columnDefs"
+				:rowData="allUsers"
+				:cellClicked="onCellClicked"
+				:enableSorting="true"
+				:enableFilter="true"
+				rowSelection="single"
+				:gridReady="onGridReady"
+				:rowSelected="onRowSelected">
+	</ag-grid-vue>
 </template>
 
 <script>
@@ -108,14 +105,13 @@ export default {
 			this.gridApi.setQuickFilter(fieldVal)
 		},
 		onCellClicked(params) {
-      console.log('clicked')
 			if (params.colDef.field === 'id') {
-       	const eventData = {
-				userId: params.value,
-				selectedView: 'UserForm',
+				const eventData = {
+					userId: params.value,
+					selectedView: 'UserForm',
 			 }
        // eventBus.$emit('toggleUserModal', params.value)
-        eventBus.$emit('showUserForm', eventData)
+				eventBus.$emit('showUserForm', eventData)
 			}
 		},
 		onRowSelected(event) {
@@ -125,12 +121,15 @@ export default {
 	created() {
 		this.fetchUserGrid()
 		eventBus.$on('toggleUserModal', (userId) => {
-				this.userId = userId
+			this.userId = userId
 			if (this.showModal === true) {
 				this.showModal = false
 			} else {
 				this.showModal = true
 			}
+		 })
+		 eventBus.$on('userFilter', (str) => {
+			 this.onQuickFilterChanged(str)
 		 })
 	//	this.fetchUsers()
 	},

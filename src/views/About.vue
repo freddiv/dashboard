@@ -1,5 +1,5 @@
 <template>
-  <mdb-container class="d-flex flex-row" fluid>
+  <mdb-container class="d-flex flex-row page" fluid>
     <div class="p-2">
       <mdb-select multiple selectAll @getValue="getSelectValue" :options="multiOptions" />
       <label>Example label</label>

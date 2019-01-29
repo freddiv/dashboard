@@ -13,24 +13,6 @@
 			</navbar-nav>
 			<!-- Search form -->
 		</navbar-collapse>
-		<modal v-show="isError" @close="close" danger>
-		<modal-header>
-			<modal-title>Danger Modal</modal-title>
-		</modal-header>
-		<modal-body>
-			<row>
-			<column col="3" class="text-center"><fa icon="shopping-cart" size="4x"/></column>
-			<column col="9">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, molestiae provident temporibus sunt earum.</p>
-				<h2><badge>v52gs1</badge></h2>
-			</column>
-			</row>
-		</modal-body>
-		<modal-footer center>
-			<btn color="danger">Get it now <fa icon="diamond" class="ml-1" color="white"/></btn>
-			<btn @click="close" outline="danger">No, thanks</btn>
-		</modal-footer>
-		</modal>
 	</mdb-navbar>
 </template>
 
@@ -53,7 +35,6 @@ import {
 	Column,
 	Badge,
 	Row,
-	Fa,
 	Btn,
 } from 'mdbvue'
 
@@ -72,7 +53,6 @@ export default {
 		Column,
 		Badge,
 		Row,
-		Fa,
 		Btn,
 		QCLogo,
 		LoginForm,
@@ -104,8 +84,7 @@ export default {
 				this.isError = false
 			}
 		 },
-		
-	}
+	},
 }
 </script>
 

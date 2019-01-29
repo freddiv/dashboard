@@ -1,9 +1,9 @@
-import actions from '@/store/actions.js'
-import api from '@/api.js'
+import actions from '@/store/modules/auth/actions.js'
+import auth from '@/api/auth.js'
 import session from '@/session.js'
 import router from '@/router.js'
 
-jest.mock('@/api.js', () => ({isServerUp: jest.fn().mockResolvedValue({status: 200})}))
+jest.mock('@/api/auth.js', () => ({isServerUp: jest.fn().mockResolvedValue({status: 200})}))
 jest.mock('@/session.js', () => ({
 	validateLocalToken: jest.fn().mockResolvedValue(false),
 	getSharedTabSession: jest.fn(cb => cb()),
@@ -21,20 +21,20 @@ const ctx = {
 describe('DataCheck actions', () => {
 	describe('checkLogin', () => {
 		it('should change state for server down when rejected', async() => {
-			api.isServerUp.mockRejectedValueOnce({})
+			auth.isServerUp.mockRejectedValueOnce({})
 			await actions.checkLogin(ctx)
-			expect(api.isServerUp).toBeCalled()
+			expect(auth.isServerUp).toBeCalled()
 			expect(ctx.commit).toBeCalledWith('serverDown')
 		})
 		it('should change state for server down when resolved without status 200', async() => {
-			api.isServerUp.mockResolvedValueOnce({})
+			auth.isServerUp.mockResolvedValueOnce({})
 			await actions.checkLogin(ctx)
-			expect(api.isServerUp).toBeCalled()
+			expect(auth.isServerUp).toBeCalled()
 			expect(ctx.commit).toBeCalledWith('serverDown')
 		})
 		it('should try to login when server is up', async() => {
 			await actions.checkLogin(ctx)
-			expect(api.isServerUp).toBeCalled()
+			expect(auth.isServerUp).toBeCalled()
 			expect(ctx.dispatch).toBeCalledWith('tryLogin')
 		})
 	})

@@ -1,8 +1,10 @@
 <template>
 <div id="app" class="flyout">
 	<QCHeader/>
-	<main :style="{marginTop: '53px'}">
-		<router-view/>
+	<main :style="{marginTop: '53px', minHeight: '750px'}">
+		<transition enter-active-class="animated fadeInTop" leave-active-class="animated fadeOutBottom">
+			<router-view/>
+		</transition>
 	</main>
 	<QCFooter/>
 </div>
@@ -31,5 +33,9 @@ export default {
 }
 .active {
   background-color: rgba(255, 255, 255, 0.1);
+}
+.page {
+	position: fixed;
+	width: inherit;
 }
 </style>

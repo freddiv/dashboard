@@ -3,6 +3,7 @@ import '../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css'
 import '../node_modules/material-design-icons/iconfont/material-icons.css'
 import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbvue/build/css/mdb.css'
+import 'animate.css/animate.min.css'
 import Notify from 'mdbvue/src/components/pro/Notify'
 import Vue from 'vue'
 import vuenotify from './helpers/pnotify'
@@ -18,8 +19,12 @@ export const eventBus = new Vue({
 		toggleUserModal(userId) {
 			this.$emit('toggleUserModal', userId)
 		},
-		showUserForm(eventData) {	
+		showUserForm(eventData) {
 			this.$emit('showUserForm', eventData)
+		},
+		userFilter(str) {
+			console.log('eventBus', str)
+			this.$emit('userFilter', str)
 		},
 	},
 })

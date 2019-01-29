@@ -41,7 +41,6 @@ import {
 	Column,
 	Badge,
 	Row,
-	Fa,
 	Btn,
 } from 'mdbvue'
 
@@ -58,7 +57,6 @@ export default {
 		Column,
 		Badge,
 		Row,
-		Fa,
 		Btn,
 	},
 	data() {

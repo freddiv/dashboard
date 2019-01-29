@@ -56,7 +56,7 @@ export default {
 	async logout({commit}) {
 		await session.logout()
 		commit('logout')
-		location.reload(true)
+		// location.reload(true)
 	},
 	timeout() {
 	//	console.log('called timeout')

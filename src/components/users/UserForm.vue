@@ -4,7 +4,7 @@
 				 <card cascade class="text-left">
 					<form class="needs-validation" id="userForm"  @keydown="stopRKey()"  @submit.prevent="addUser()">
 					<mdb-card-header class="primary-color white-text">
-						<h4 class="title"><fa v-if="userId != 0" class="fa fa-pencil" /><fa v-if="userId == 0" class="fa fa-user" /> {{userId == 0 ? 'Add New' : 'Edit'}} User </h4>
+						<h4 class="title"><i v-if="userId != 0" class="fa fa-edit"></i><i v-if="userId == 0" class="fa fa-user"></i> {{userId == 0 ? 'Add New' : 'Edit'}} User </h4>
 					</mdb-card-header>
 					<card-body class="grey-text">
 					<div class="input-group mt-3">
@@ -76,7 +76,7 @@
 						</div>
 					</card-body>
 					<mdb-card-footer>
-						<btn color="warning" @click.native="cancel">Close</btn>
+						<btn color="warning" @click.native="cancel">Cancel</btn>
 						<btn color="green">{{userId == 0 ? 'Add New' : 'Edit'}} User </btn>
 					</mdb-card-footer>
 					 </form>
@@ -88,10 +88,10 @@
 <script>
 import {eventBus} from '../../main.js'
 import {
-	mapActions, mapGetters, mapState,
+	mapActions, mapState,
 } from 'vuex'
 import {
-	Container, Row, Btn, Fa, Card, CardBody, mdbCardTitle, mdbCardText, mdbCardHeader, mdbCardFooter, mdbView, Modal, ModalHeader, ModalBody, ModalFooter, Column,	mdbContainer,
+	Container, Row, Btn, Card, CardBody, mdbCardTitle, mdbCardText, mdbCardHeader, mdbCardFooter, mdbView, Modal, ModalHeader, ModalBody, ModalFooter, Column,	mdbContainer,
 } from 'mdbvue'
 
 export default {
@@ -101,15 +101,14 @@ export default {
 		mdbContainer,
 		Row,
 		Card,
-        CardBody, 
-        mdbCardTitle, 
-        mdbCardText,
-        mdbCardHeader,
-        mdbCardFooter,
-        mdbView,
+		CardBody,
+		mdbCardTitle,
+		mdbCardText,
+		mdbCardHeader,
+		mdbCardFooter,
+		mdbView,
 		Column,
 		Btn,
-		Fa,
 		Modal,
 		ModalHeader,
 		ModalBody,
@@ -145,7 +144,7 @@ export default {
 				selectedView: 'UserGrid',
 			 }
        // eventBus.$emit('toggleUserModal', params.value)
-        eventBus.$emit('showUserForm', eventData)
+			eventBus.$emit('showUserForm', eventData)
 		 },
 		 addUser() {
 			// console.log(event)
@@ -165,14 +164,16 @@ export default {
 		},
 	 },
 	 created() {
-		 console.log(this)
-			this.fetchUser(this.userId)
-			this.userById = this.$store.state.users.userById
+		this.fetchUser(this.userId)
+		this.userById = this.$store.state.users.userById
 	},
 }
 </script>
 
 <style scoped>
+.card-cascade {
+	width: 900px;
+}
 .invalid-tooltip {
 	position:relative;
 }
