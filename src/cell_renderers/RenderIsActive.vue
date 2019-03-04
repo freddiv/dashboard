@@ -1,12 +1,14 @@
 <template>
 	<div class="isActiveUser">
-	  <strong><span> {{displayValue}} </span></strong>
+	  <mdb-badge color="primary-color">{{displayValue}}</mdb-badge>
 	</div>
 </template>
 
 <script>
+import { mdbBadge, mdbChip } from 'mdbvue'
 export default {
 	name: 'RenderIsActive',
+	components: { mdbBadge, mdbChip},
 	 computed: {
 	  displayValue() {
 		  const data = this.params.data

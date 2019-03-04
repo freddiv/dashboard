@@ -18,6 +18,7 @@ import {eventBus} from '../../main.js'
 import {AgGridVue} from 'ag-grid-vue'
 import {mapActions, mapGetters} from 'vuex'
 import RenderIsActive from '../../cell_renderers/RenderIsActive'
+import RenderObjArray from '../../cell_renderers/RenderObjArray'
 import EditUserLink from '../../cell_renderers/EditUserLink'
 
 const GRID_KEY = 'user-grid-config'
@@ -53,6 +54,7 @@ export default {
 	components: {
 		AgGridVue,
 		RenderIsActive,
+		RenderObjArray,
 		EditUserLink,
 	},
 	computed: {
