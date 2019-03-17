@@ -10,8 +10,10 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "ag-grid-community": "^19.1.4",
-    "ag-grid-vue": "^19.1.2",
+    "ag-grid-community": "^20.1.0",
+    "ag-grid-enterprise": "^20.1.0",
+    "ag-grid-vue": "^20.1.0",
+    "vue-property-decorator": "7.3.0",
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "axios-retry": "^3.1.1",

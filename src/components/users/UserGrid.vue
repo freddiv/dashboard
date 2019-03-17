@@ -1,7 +1,11 @@
 <template>
 	<ag-grid-vue ref="userGrid" v-bind:style="gridSize"
 				class="ag-theme-balham"
-				:defaultColDef="defaultColDef"
+				 :defaultColDef="{
+                            sortable: true,
+                            resizable: true,
+                            filter: true
+                         }"
 				:columnDefs="columnDefs"
 				:rowData="allUsers"
 				:cellClicked="onCellClicked"
@@ -41,10 +45,10 @@ export default {
 				height: '500px',
 			},
 			defaultColDef: {
-				width: 100,
-				editable: true,
-				filter: 'agTextColumnFilter',
-			},
+				sortable: true,
+				resizable: true,
+				filter: true
+				},
 			userId: 0,
 			gridApi: '',
 			columnApi: '',
